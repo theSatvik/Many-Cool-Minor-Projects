@@ -1,0 +1,10 @@
+error{
+    background: red;
+    color: white;
+}
+.maindiv{
+    text-align:center!important;
+    margin-top:50px;
+    border:1px solid;
+    padding:20px 0px 20px 0px;
+}

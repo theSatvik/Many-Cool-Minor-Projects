@@ -1,0 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
+body{
+	font-size: 20px;
+	font-family: 'Work Sans', sans-serif;
+	color: #333;
+    font-weight: 300;
+    background-color:aliceblue;
+}
+h1{
+  font-weight: 300;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #444;
+  color: #fff;
+}
+
+button{
+  font-family: 'Work Sans', sans-serif;
+	font-size: 22px;
+	background-color: rgb(214, 97, 54);
+	color: #fff;
+	border: 0px;
+	border-radius: 3px;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 15px;
+  margin-top:10px;
+}
+button:hover{
+	background-color:coral;
+}
+
+#code {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 100px;
+  background: url(http://i.imgur.com/2cOaJ.png) top -12px left / auto no-repeat, 
+              linear-gradient(rgb(71, 64, 64) 100%, rgb(78, 69, 69) 50%) top left / 100% 32px ;
+  border: 1px solid #CCC;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  resize: vertical;
+  line-height: 16px;
+  font-size: 13px;
+  color:#fff;
+}
+textarea{
+    width: 60%;
+}
+
+
+#lang{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float:right;
+  width: 10%;
+  border-radius: 10px;
+  background-color:white ;
+  position: relative;
+  padding:0.2rem 0.2rem 0.2rem 0.2rem ;
+  margin-top: 40px;
+}
+#quiz-container{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 55%;
+  border-radius: 10px;
+  background-color:white ;
+  position: relative;
+  padding:1rem 1rem 1rem 1rem ;
+  margin-top: 40px;
+}

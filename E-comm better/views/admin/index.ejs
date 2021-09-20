@@ -1,0 +1,141 @@
+<button id="want_add_product">Add Product</button>
+<div id="add_product_contianer" style="display:none;">
+    Name
+    <input id="pname" placeholder="Product Name"/>
+    
+    Price
+    <input id="price" placeholder="Product Price"/>
+
+    Description
+    <input id="description" placeholder="Product Description"/>
+
+    <button id="add_product">Save</button>
+</div>
+
+<div id="parent">
+
+</div>
+
+<script>
+    var want_add_product = document.getElementById("want_add_product");
+    var add_product = document.getElementById("add_product");
+    var product_name = document.getElementById("pname");
+    var price = document.getElementById("price");
+    var parent = document.getElementById("parent");
+    var description = document.getElementById("description");
+    var add_product_contianer = document.getElementById("add_product_contianer");
+
+
+    
+
+    function fetchAllProducts()
+    {
+        var xhttp = new XMLHttpRequest();
+        
+        xhttp.addEventListener("load", function()
+        {
+            var result = JSON.parse(this.responseText);
+
+            if(result.status)
+            {
+                result.data.forEach(function(product)
+                {
+                    printProduct(product)
+                })
+            }
+
+            
+            else
+            {
+                console.log(result, "error occured");
+            }
+
+            
+        })
+
+        xhttp.open("POST", "/admin/get_product");
+        
+        xhttp.send();
+    }
+
+
+    fetchAllProducts();
+
+
+
+
+    want_add_product.addEventListener("click", function(){
+
+        add_product_contianer.style.display = "block";
+
+        want_add_product.style.display = "none";
+    })
+
+    add_product.addEventListener("click", function()
+    {
+        var pname = product_name.value;
+        var product_description = description.value;
+        var product_price = price.value;
+
+        var xhttp = new XMLHttpRequest();
+        
+        xhttp.addEventListener("load", function()
+        {
+            var result = JSON.parse(this.responseText);
+
+            if(result.status)
+            {
+                add_product_contianer.style.display = "none";
+
+                want_add_product.style.display = "block";
+
+                product_name.value = "";
+                description.value = "";
+                price.value = "";
+
+                printProduct({
+                    title:pname,
+                    price:product_price,
+                    description:product_description
+                })
+
+            }
+            else
+            {
+                console.log(result, "error occured");
+            }
+
+            
+        })
+
+        xhttp.open("POST", "/add_product");
+        xhttp.setRequestHeader('Content-Type', 'application/json') ;
+        xhttp.send(JSON.stringify({
+            title:pname,
+            price:product_price,
+            description:product_description
+        }));
+    })
+
+
+function printProduct(product)
+{
+    var container = document.createElement("div");
+
+    var p_name = document.createElement("lable");
+    p_name.innerText = product.title;
+
+    var p_price = document.createElement("lable");
+    p_price.innerText = product.price;
+
+    var p_des = document.createElement("lable");
+    p_des.innerText= product.description;
+
+    container.appendChild(p_name);
+    container.appendChild(p_price);
+    container.appendChild(p_des);
+
+    parent.appendChild(container);
+}
+
+</script>

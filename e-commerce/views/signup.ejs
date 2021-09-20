@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>
+            SIGNUP
+        </title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+               
+        <form id="newUserForm" class="userform">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        <div class="header align-right">
+                            <a href="/login"><span style="font-size: 30px;">&#8676;</span> GO BACK TO LOGIN</a>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2"><h1>SIGN UP</h1></th>
+                </tr>
+                <tr>
+                    <td class="align-right lables">
+                        <label for="cusname">NAME</label>
+                    </td>
+                    <td class="align-left">
+                        <input type="text" name="cusname" id="cusname" class="textInput">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class='error' id='cusnameerror'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="align-right lables">
+                        <label for="email">EMAIL</label>
+                    </td>
+                    <td class="align-left">
+                        <input type="email" name="email" id="email" class="textInput">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class='error' id='emailerror'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="align-right lables">
+                        <label for="username">USERNAME</label>
+                    </td>
+                    <td class="align-left">
+                        <input type="text" name="username" id="username" class="textInput">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class='error' id='usernameerror'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="align-right lables">
+                        <label for="password">PASSWORD</label>
+                    </td>
+                    <td class="align-left">
+                        <input type="password" name="password" id="password" class="textInput">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class='error' id='passworderror'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="center">
+                        <input type="submit" value="SUBMIT" id="submit">
+                    </td>
+                </tr>
+            </table>
+            
+            
+            
+        </form>
+    </body>
+    <script src="/js/signup.js"></script>
+</html>

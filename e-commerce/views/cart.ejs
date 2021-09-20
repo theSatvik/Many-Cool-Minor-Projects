@@ -1,0 +1,23 @@
+<h1>Cart List</h1>
+<div>
+<% 
+            function findInCart(id,cart){
+              return cart.find( function (element) { return element.id == id; });
+           }
+        %>  
+    <% products.forEach(function(product){ %>
+
+        <div>
+            <img style="width:100px" src="/images/<%= product.image %>"/>
+            <h4> <%= product.title %> </h4>
+            <p>Description</p>
+            <p><%= product.description %></p>
+            <button id="<%= product.id %>" class="add_to_cart"><a href="/remove_from_cart?id=<%= product.id %>">Remove From cart</a></button>
+   
+        </div>
+
+    <% }) %>
+
+</div>
+
+

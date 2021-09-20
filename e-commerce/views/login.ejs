@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>
+            LOGIN
+        </title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+               
+        <form id="newUserForm" class="userform">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        <div class="header align-right">
+                            <a href="/"><span style="font-size: 30px;">&#8676;</span> GO BACK TO HOME</a>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2"><h1>LOGIN</h1></th>
+                </tr>
+                <tr>
+                    <td class="align-right lables">
+                        <label for="username">USERNAME</label>
+                    </td>
+                    <td class="align-left">
+                        <input type="text" name="username" id="username" class="textInput">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="align-right lables">
+                        <label for="password">PASSWORD</label>
+                    </td>
+                    <td class="align-left">
+                        <input type="password" name="password" id="password" class="textInput">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class='align-left'>
+                        <div class='error' id='error'></div>
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td colspan="2" class="center">
+                        <input type="submit" value="SUBMIT" id="submit">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="center">
+                        <a href="/signup">CLICK HERE TO SIGN UP</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="center">
+                        <a href="/changepassword">CLICK HERE TO RESET PASSWORD</a>
+                    </td>
+                </tr>
+            </table>
+            
+            
+            
+        </form>
+    </body>
+    <script src="/js/login.js"></script>
+</html>

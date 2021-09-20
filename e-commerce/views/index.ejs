@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>
+            HOME
+        </title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <% 
+            function findInCart(id,cart){
+              return cart.find( function (element) { return element.id == id; });
+           }
+        %>
+        <h1><a href="cart" style="color:orange">View Cart</a></h1>
+        <%-include(header)-%>
+        <br><br>
+        <div id="container">
+            <% products.forEach(function(product){ %>
+                <br>
+                <div class="cards <%= product.orientation %>" id="<%= product.id %>">
+                    <img class="<%= product.class %>" src="/images/<%= product.image %>"/><br><br>
+                    <h1> <%= product.title %> </h1><br><br><br>
+                    <% if( findInCart(product.id,cart_items) ){ %>
+                <button id="<%= product.id %>" class="add_to_cart">Added to cart</button>
+            <% } else {%>
+                <button id="<%= product.id %>" class="add_to_cart"><a href="/add_to_cart?id=<%= product.id %>">Add to cart</a></button>
+            <% } %>
+                    <%- view %>
+                    
+                </div>
+                <br>
+            <% }) %>
+            <%- loadmore %>
+        </div>
+        
+        
+    </body>
+    <script src="/js/home.js"></script>
+</html>

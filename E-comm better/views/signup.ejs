@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/styles/signup/styles.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<%- include('header.ejs') %>
+
+<div class="container maindiv">
+    <h1 class="heading">SIGNUP</h1><br><br>
+    <form>
+        <error> <%= error %> </error><br><br>
+        <input id = "username" name="username" size="40px" placeholder="Enter Your name" required/><br><br>
+        <input id = "email" name="email" size="40px" type="email" placeholder="Enter Email" required/><br><br>
+        <input id = "password" name="password" size="40px" placeholder="Enter Password" type="password" required/><br>
+        <p id="errRemark" style="color: red;font-size: 12px;"></p>
+        <button id = "signup" class="btn btn-success btn-lg" type="button">Signup</button>&nbsp;&nbsp;&nbsp;
+        <a href="/login"><button type="button" class="btn btn-outline-secondary btn-lg">Go To Login</button></a>
+    </form>
+    
+</div>
+
+<script>
+    var password = document.getElementById("password");
+    var username = document.getElementById("username")
+    var email = document.getElementById("email");
+    var signupBtn = document.getElementById("signup");
+    var errRemark = document.getElementById("errRemark");
+    signupBtn.addEventListener("click",function(req,res){
+        if(email.value === "" || password.value === "" || username.value == "")
+        {
+            errRemark.innerText = "*please fill all fields"
+            return;
+        }
+        var request = new XMLHttpRequest();
+        request.addEventListener("load", function(response){
+            console.log(this.status)
+            if(this.status == 400)
+            {
+                errRemark.innerText = this.responseText;
+            }
+            else if(this.status == 500)
+            {
+                alert("Some Error occured please try again");
+            }
+            else if(this.status == 200)
+            {
+                window.location.href = "home";
+            }
+        })
+        var data = {
+            username: username.value,
+            password: password.value,
+            email: email.value
+        }
+        request.open("POST",'/signup');
+        console.log(data);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify(data));
+    })
+</script>

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: #e7ac75;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    height: 500px;
+    width: 240px;
+    background-color: rgba(73, 60, 49, 0.8);
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+}
+
+#timerContainer{
+    flex: 1;
+    display: flex;
+    background: #00a0b0;
+    margin: 5px;
+    padding: 10px;
+    
+}
+
+#timer{
+    background-color: #f4f4f4;
+    color: #00a0b0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+#flexContainer{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.divElement{
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: dotted 1px white;
+}
+
+#status{
+    flex:1;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.TimerTog{
+    font-size: 12px;
+    text-align: center;
+    color: white;
+}
+.TimerTog #sessionTime{
+    color: #00a0b0;
+    font-size: 16px;
+}
+
+.TimerTog #breakTime{
+    color: #eb6841;
+    font-size: 16px;
+    
+}
+
+.button {
+    background-color: #1c1814;
+    border: none;
+    color: white;
+    padding: 2px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}

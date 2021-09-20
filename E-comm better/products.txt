@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "title": "Mobile",
+    "description": "cellphone",
+    "stock": "10",
+    "src": "mobile.png",
+    "price": 10000
+  },
+  {
+    "id": "2",
+    "title": "Macbook",
+    "description": "expensive laptop",
+    "stock": "7",
+    "src": "a.jpg",
+    "price": 90000
+  },
+  {
+    "id": "3",
+    "title": "Iphone11",
+    "description": "Iphone",
+    "stock": "10",
+    "src": "iphone.png",
+    "price": 60000
+  },
+  {
+    "id": "4",
+    "title": "Watch",
+    "description": "Redmi Smart watch",
+    "stock": "16",
+    "src": "watch.jpg",
+    "price": 1200
+  },
+  {
+    "id": "5",
+    "title": "Earphone",
+    "description": "OnePlus Brand Wireless Earphones",
+    "stock": "43",
+    "src": "earphone.jpg",
+    "price": 3000
+  },
+  {
+    "id": "6",
+    "title": "Laptop",
+    "description": "Lenovo ThinkPad",
+    "stock": "13",
+    "src": "laptop.jpg",
+    "price": 45000
+  },
+  {
+    "id": "7",
+    "title": "Speakers",
+    "description": "Home Audio Devices",
+    "stock": "45",
+    "src": "speakers.jpg",
+    "price": 10000
+  },
+  {
+    "id": "9",
+    "title": "Printer",
+    "description": "Colour Printer",
+    "stock": "100",
+    "src": "printer.jpg",
+    "price": 10000
+  }
+]

@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="/styles/home/styles.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<div id="navbar">
+
+    <h2 id = "heading">Fooley Cooley</h2>
+    <h6 id="username">Hello! <%=username%></h6>
+    <a href="viewCart"  id="viewCart"><h6>View Cart</h6></a> 
+    <a href="logout"  id="logout"><h6>Logout</h6></a> 
+</div> 
+<br><br>
+<div class="container">
+    <div id = "listContainer" class="row">
+   
+        <% products.forEach(function(product){ %>
+                <div id = "<%= product.id %>" class="col-md-4 col-sm-6 item">
+                    <img style="height:110px;width:110px;" src="/img/<%= product.src %>"/>
+                    <h4> <%= product.title %> </h4>
+                    <button class="viewDetails">View Details</button>
+                    <% if( !product.addedToCart ){ %>
+                        <button class="addtocart">Add to cart</button>
+                    <% } else {%>
+                        <button class="addtocart diableaddtocart" disabled>Added to cart</button>
+                    <% } %>
+                </div> 
+        <% }) %>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+
+            <span class="close" id = "closeDetails">&times;</span>
+            <div style="display: flex; justify-content: space-evenly;">
+                <img id = "viewimg" style="height:200px;width:200px; float: left;" src="img/a.jpg"/>
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                    <h6 id = "viewTitle"></h6>            
+                    <h6 id = "viewDescription"></h6>
+                    <h6 id = "viewStock"></h6>
+                </div>
+            </div>
+        </div>
+      
+      </div>
+</div>
+<br><br>
+<div id="bottom-div" style="text-align:center;">
+    <button id="loadmorebtn" class="btn btn-lg btn-outline-info">Load more</button>
+</div>
+<script>
+    var divContainer = document.getElementById("listContainer");
+    var loadmorebtn = document.getElementById("loadmorebtn");
+
+    var modal = document.getElementById("myModal");
+    var closeDetails = document.getElementById("closeDetails")
+    var viewTitle = document.getElementById("viewTitle")
+    var viewimg = document.getElementById("viewimg")
+    var viewDescription = document.getElementById("viewDescription")
+    var viewStock = document.getElementById("viewStock")
+    var pgno = 1;
+
+    addViewDetailseventListner();
+
+    loadmorebtn.addEventListener("click", function(){
+        var request = new XMLHttpRequest();
+        request.addEventListener("load",function(response){
+            products= JSON.parse(response.target.responseText);
+            console.log(products);
+            if(products.length == 0)
+            {
+                loadmorebtn.setAttribute("style", "display:none");
+                return;
+            }
+            addProduct(products);
+            pgno++;
+        });
+        request.open("POST","/loadMore");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify({'pgno':pgno}));
+    })
+
+    function addProduct(products)
+    {
+        for(i=0;i<products.length;i++)
+        {
+            var divItem= document.createElement("div");
+            divItem.setAttribute("class","col-md-4 col-sm-6 item")
+            var img = document.createElement('img');
+            img.setAttribute("src","img/"+products[i].src)
+            img.setAttribute("style","height:110px;width:110px;")
+            divItem.appendChild(img);
+            var h4 = document.createElement('h4');
+            h4.innerText=products[i].title;
+            divItem.appendChild(h4)
+
+            var viewDetailsbtn = document.createElement("button");
+            viewDetailsbtn.setAttribute("class", "viewDetails");
+            viewDetailsbtn.innerText = "View Details";
+            viewDetailsbtn.addEventListener("click", getDetails);
+            divItem.appendChild(viewDetailsbtn);
+
+            viewDetailsbtn.insertAdjacentHTML('afterend', '&nbsp;')
+
+            var addtocartbtn = document.createElement("button");
+            addtocartbtn.setAttribute("class", "addtocart");
+            addtocartbtn.innerText = "Add to Cart";
+            if(products[i].addedToCart)
+            {
+                addtocartbtn.innerText = "Added to Cart";
+                addtocartbtn.disabled = true;
+                addtocartbtn.classList.add("diableaddtocart");
+            }
+            addtocartbtn.addEventListener("click", addToCart);
+            divItem.appendChild(addtocartbtn);
+
+            divItem.setAttribute("id",products[i].id);
+            divContainer.appendChild(divItem);
+
+        }
+    }
+
+    function addViewDetailseventListner()
+    {
+        var viewDetails = document.getElementsByClassName("viewDetails");
+        var addtocartbtn = document.getElementsByClassName("addtocart");
+        for(var i=0;i<viewDetails.length;i++)
+        {
+            viewDetails[i].addEventListener("click", getDetails);
+            addtocartbtn[i].addEventListener("click", addToCart);
+        }
+    }
+
+    function getDetails(event)
+    {
+        var parentDiv = event.target.parentNode;
+        var id = parseInt(parentDiv.id);
+         
+        var request = new XMLHttpRequest();
+        request.addEventListener("load", function(e) {
+            var res = JSON.parse(e.target.responseText)
+            viewTitle.innerText = res.title;
+            viewimg.setAttribute("src", "/img/"+res.src);
+            viewDescription.innerText = "Description: "+res.description;
+            viewStock.innerText = "Available Stock: "+res.stock;
+            modal.style.display = "block";           
+            
+        })
+        request.open("POST", "/getProductDetails");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify( {id: id} ));
+    }
+
+    function addToCart(event)
+    {
+        var parentDiv = event.target.parentNode;
+        var id = parseInt(parentDiv.id);
+        var request = new XMLHttpRequest();
+        request.addEventListener("load", function(response) {
+            if(this.status == 500)
+            {
+                alert("Some Error Occured. PLease try Again");
+            }
+            else if(this.status == 302)
+            {
+                window.location.href = this.responseText;
+            }
+            else if(this.status == 200)
+            {
+                event.target.innerText = 'Added to cart';
+                event.target.disabled = true;
+                event.target.classList.add("diableaddtocart")
+            }
+            
+        })
+        request.open("POST", "/addToCart");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify( {id: id} ));
+    }
+    closeDetails.addEventListener("click", function(){
+        modal.style.display = "none";
+    })
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+        
+</script>

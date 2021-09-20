@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="/styles/home/styles.css">
+<div id="navbar">
+
+    <h2 id = "heading">Fooley Cooley</h2>
+    <h6 id="username">Hello! <%=username%></h6>
+    <a href="home"  id="viewCart"><h6>Go Back</h6></a> 
+    <a href="logout"  id="logout"><h6>Logout</h6></a> 
+</div>
+<br><br>
+
+<div class="container">
+    <h4 id = "message"><%= message %></h4>
+    <% for(const i in product){ %>
+        <div id = "<%= i %>" style="padding-bottom: 30px">
+            <img style="height:110px;width:110px;" src="/img/<%= product[i].src %>"/>
+            <h4> <%= product[i].title %> </h4>
+            <p>Description:- <br>&nbsp;&nbsp;&nbsp; <%= product[i].description %></p>
+            <button class="removeCart">Remove From Cart</button>
+        </div>
+    <% } %>
+</div>
+
+<script>
+    var messageh4 = document.getElementById('message');
+    addremoveeventListner();
+    function addremoveeventListner()
+    {
+        var removeCartbtn = document.getElementsByClassName("removeCart");
+        for(var i=0;i<removeCartbtn.length;i++)
+        {
+            removeCartbtn[i].addEventListener("click", removeFromCart);
+        }
+    }
+    function removeFromCart(event){
+
+        
+        var parentDiv = event.target.parentNode;
+        var id = parseInt(parentDiv.id);
+        var request = new XMLHttpRequest();
+        request.addEventListener("load", function(response) {
+            if(this.status == 200)
+            {
+                parentDiv.parentNode.removeChild(parentDiv);
+                messageh4.innerText = this.responseText;
+            }
+            else if(this.status === 302)
+            {
+                window.location.href = this.responseText;
+            }
+            else if(this.status == 500)
+            {
+                alert("Some Error Occured. PLease try Again");
+            }
+            
+        })
+        request.open("POST", "/removeFromCart");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify( {id: id} ));
+        
+    }
+</script>

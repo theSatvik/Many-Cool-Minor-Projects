@@ -1,0 +1,268 @@
+/* general classes and tags section */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+.center
+{
+    text-align: center;
+}
+
+h1
+{
+    font-size: 50px;
+    color: #e88e2e;
+    display: inline;
+}
+
+.align-left
+{
+    text-align: left;
+}
+
+.align-right
+{
+    text-align: right;
+}
+
+/* end of general classes and tags section */
+
+/* body section */
+
+body
+{
+    background-color: #ffffff;
+    color: #d8d8d8;
+    font-family: 'Open sans', serif;
+}
+/* header section */
+
+.header
+{
+    background: #e88e2e;
+    color:white;
+    font-size: 40px;
+    padding: 30px 10px;
+
+}
+
+.header h1
+{
+    padding-left: 20px;
+}
+
+.tabs
+{
+    display: inline;
+    float: right;
+    padding: 15px 30px;
+    font-size: 25px;
+}
+
+.tabs a
+{
+    font-size: 25px;
+}
+.tabs a:hover
+{
+    opacity: 0.8;
+}
+
+
+/* end of header section */
+
+/* form section */
+
+.userform
+{
+    width: 80%;
+    margin: 40px auto;
+}
+table
+{
+    width: 100%;
+    font-size: 30px;
+    border-collapse: separate;
+    border-spacing: 20px 20px;
+
+}
+.lables
+{
+    width: 40%;
+}
+.textInput
+{
+    width: 500px;
+    font-size: 30px;
+    font-family: 'Open sans', serif;
+    border-radius: 10px;    
+    border: #e88e2e solid 2px;
+
+}
+
+.header > h1{
+    color:#ffffff;
+}
+
+
+#submit, #loadMore, .view , button > a ,button
+{
+    padding : 0.6rem 1rem 0.6rem 1rem;
+    font-size: 30px;
+    font-family: 'Open sans', serif;;
+    color: #ffffff;
+    border-radius: 5px;
+    border:none;
+    margin-right:5px; 
+    background-color: #e88e2e;
+}
+
+th .header
+{
+    /* background-color: white; */
+    color:white;
+    border-radius: 25px 25px 0 0;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+td > a{
+    color:#e88e2e;
+} 
+
+a
+{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    
+}
+
+.header a
+{
+    padding-right: 20px;
+}
+
+a:hover,button:hover
+{
+ opacity: 0.8;
+}
+#submit:hover, #loadMore:hover, .view:hover
+{
+    opacity: 0.8;
+}
+
+.error
+{
+    color: #9c0b0b;
+    font-size: 20px;
+}
+
+/* end of form section */
+
+/* products section */
+
+#container
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#loadMore
+{
+    margin: auto;
+}
+
+.cards
+{
+    text-align: center;
+    background: #ffffff;
+    width: 25%;
+    padding: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    flex: 1 1 1;
+}
+
+.cards h1
+{
+    font-size: 30px;
+}
+
+.pleaseLogIn
+{
+    width: 350px;
+    height: auto;
+    
+}
+
+.cardsImage
+{
+    width: auto;
+    height: 200px;
+}
+
+/* end of products section */
+
+/* modal section*/
+
+.modal
+{
+    background: #ffffff;
+    width: 90%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content
+{
+    padding: 30px;
+    width: 75%;
+    background: #ffffff;
+    border-radius: 20px;
+    position: relative;
+    border: #e88e2e solid 2px;
+}
+
+.closeButton
+{
+    border: none;
+    border-radius: 10px;
+    background: #e88e2e;
+    color: #ffffff;
+    font-size: 30px;
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    
+
+}
+
+.closeButton:hover
+{
+    /* background: #e88e2e; */
+    opacity: 0.8;
+    /* color: #0b0c10; */
+}
+
+.desc
+{
+    width: 75%;
+    font-size: 25px;
+}
+
+.modalImage
+{
+    width: auto;
+    height: 250px;
+    margin-left: 350px;
+}
+
+/* end of modal section */
+
+
+/* end of body section */

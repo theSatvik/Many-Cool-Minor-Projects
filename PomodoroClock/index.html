@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Satvik's Clock</title>
+</head>
+<body>
+        <div class="container">
+            <div id = "timerContainer">
+                <div id="timer"></div>
+            </div>
+            <div id = "flexContainer">
+                <div class = "divElement">
+                    <span id = "status">Session 1</span>
+                </div>
+                <div class = "divElement">
+                    <div class="TimerTog">
+                        Session Time
+                        <br>
+                        <span id="sessionTime"> </span><br>
+                        <button id="sessionadd" class="button">+</button>
+                        <button id ="sessionminus"class="button">-</button>
+                    </div>
+
+                    <div class = "TimerTog">
+                        Break Time
+                        <br>
+                        <span id="breakTime"> </span><br>
+                        <button id = "breakadd"class="button">+</button>
+                        <button id ="breakminus" class="button">-</button>                        
+                    </div>
+                </div>
+                <div style="border: none;" class = "divElement">
+                    <button id="start"  style="padding: 8px 12px; margin-top: 0px;" class="button">Start</button>
+                    <button id="reset" style="padding: 8px 12px; margin-top: 0px;" class="button">Reset</button>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+
+        
+</body>
+</html>
